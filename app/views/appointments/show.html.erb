@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+  <p>
+    <strong>Patient:</strong>
+    <%= @appointment.patient.full_name unless @appointment.patient.nil? %>
+  </p>
+
+  <p>
+    <strong>Professional:</strong>
+    <%= @appointment.professional.full_name unless @appointment.professional.nil? %>
+  </p>
+
+  <p>
+    <strong>Treatment:</strong>
+    <%= @appointment.treatment.name unless @appointment.treatment.nil? %>
+  </p>
+
+  <p>
+    <strong>Clinic:</strong>
+    <%= @appointment.clinic.name unless @appointment.clinic.nil? %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= @appointment.date %>
+  </p>
+
+  <p>
+    <strong>Hour:</strong>
+    <%= @appointment.hour.strftime("%H:%M") %>
+  </p>
+  
+  <p>
+    <strong>Payment:</strong>
+    <%= @appointment.payment_method %>
+  </p>
+
+<div>
+  <%= link_to "Edit this appointment", edit_appointment_path(@appointment) %> |
+  <%= link_to "Back to appointments", appointments_path %>
+
+  <%= button_to "Destroy this appointment", @appointment, method: :delete %>
+</div>

@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+<!--Esto es para ubicar la estructura de la tabla, pero no tiene los datos bien ubicados todavía-->
+
+<h1>Treatments</h1>
+
+<div id="treatments">
+
+  <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @treatments.each do |treatment| %>
+        <tr>
+          <%= render treatment %>
+          <td><%= link_to "Show this treatment", treatment %></td>
+        </tr>
+        <% end %>
+      </tbody> 
+  </table>   
+</div>
+
+
+
+<%= link_to "New treatment", new_treatment_path %>

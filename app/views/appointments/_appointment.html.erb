@@ -1,0 +1,12 @@
+<div id="<%= dom_id appointment %>">
+<!-- ESTO MUESTRA EL LISTADO  DE APPOINTMENTS-->
+
+  <td><%= appointment.patient.full_name unless appointment.patient_id.nil? %></td>
+  <td><%= appointment.professional.full_name unless appointment.professional_id.nil? %></td>
+  <td><%= appointment.treatment.name unless appointment.treatment.nil? %></td>
+  <td><%= appointment.clinic.name unless appointment.clinic.nil? %></td>
+
+  <td><%= appointment.date.strftime("%d/%m/%Y") if appointment && appointment.date.present?%></td>
+  <td><%= appointment.hour.strftime("%H:%M") if appointment && appointment.hour.present?%></td>
+
+</div>

@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Clinics</h1>
+
+<div id="clinics">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clinics.each do |clinic| %>
+      <tr>
+        <%= render clinic %>
+        <td><%= link_to "Show this clinic", clinic %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+  
+</div>
+
+<%= link_to "New clinic", new_clinic_path %>

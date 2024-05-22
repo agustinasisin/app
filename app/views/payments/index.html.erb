@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Payments</h1>
+
+<div id="payments">
+
+<table>
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Method</th>
+        <th>Amount</th>
+        <th>Datetime</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @payments.each do |payment| %>
+      <tr>
+        <%= render payment %>
+        <td><%= link_to "Show this payment", payment %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- <%#= link_to "New payment", new_payment_path %> !>

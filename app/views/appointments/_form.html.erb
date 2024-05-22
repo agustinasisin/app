@@ -1,0 +1,65 @@
+<%= form_with(model: appointment) do |form| %>
+  <% if appointment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+        <% appointment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :patient_id, style: "display: block" %>
+    <%= form.collection_select(:patient_id, Patient.all, :id, :full_name) %>
+  </div>
+
+  <div>
+    <%= form.label :professional_id, style: "display: block" %>
+    <%= form.collection_select(:professional_id, Professional.all, :id, :full_name) %>
+  </div>
+
+  <div>
+    <%= form.label :treatment_id, style: "display: block" %>
+    <%= form.collection_select(:treatment_id, Treatment.all, :id, :name) %>
+  </div>
+
+  <div>
+    <%= form.label :clinic_id, style: "display: block" %>
+    <%= form.collection_select(:clinic_id, Clinic.all, :id, :name) %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :hour, style: "display: block" %>
+    <%= form.time_field :hour %>
+  </div>
+
+  <%= form.fields_for :payment, @appointment.build_payment do |payment_fields| %>
+    <div>
+      <%= payment_fields.label :amount, style: "display: block" %>
+      <%= payment_fields.number_field :amount %>
+    </div>
+    
+    <div>
+      <%= payment_fields.label :payment_method, style: "display: block" %>
+      <%= payment_fields.collection_select(:payment_method, Payment::PAYMENT_METHODS, :to_s, :titleize, prompt: "Forma de pago") %>
+    </div>
+    
+    <div>
+      <%= payment_fields.label :datetime, style: "display: block" %>
+      <%= payment_fields.datetime_field :datetime %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

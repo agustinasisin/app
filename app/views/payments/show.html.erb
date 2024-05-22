@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+  <p>
+    <strong>Patient:</strong>
+    <% @payment.appointments.each do |appointment| %>
+      <%= appointment.patient.full_name %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Payment Method:</strong>
+    <%= @payment.payment_method %>
+  </p>
+
+  <p>
+    <strong>Amount:</strong>
+    <%= @payment.amount %>
+  </p>
+
+  <p>
+    <strong>Datetime:</strong>
+    <%= @payment.datetime %>
+  </p>
+
+
+<div>
+  <%#= link_to "Edit this payment", edit_payment_path(@payment) %> |
+  <%= link_to "Back to payments", payments_path %>
+
+  <%= button_to "Destroy this payment", @payment, method: :delete %>
+</div>

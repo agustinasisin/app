@@ -1,0 +1,55 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Appointments</h1>
+
+<div id="appointments">
+
+  <form action="/appointments" method="GET">
+    Patient:
+    <input type="text" name="filter" value=""/>
+    Clinic:
+    <select name="clinic_id">
+      <option value="">Seleccione una clínica...</option>
+      <% Clinic.all.each_with_index do | c, index | %>
+        <%= link_to c.name, appointments_path(:clinic_id => c.id) %>
+        <option value="<%= c.id %>"><%= c.name %></option>
+      <% end -%>
+    </select>
+    <input type="submit" />
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Professional</th>
+        <th>Treatment</th>
+        <th>Clinic</th>
+        <th>Date</th>
+        <th>Hour</th>
+        <th>Payment</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @appointments.each do |appointment| %>
+      <tr>
+        <%= render appointment %>
+        <td><%= link_to "Show this appointment", appointment %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+      
+        
+      
+
+
+  
+
+  
+</div>
+
+<%= link_to "New appointment", new_appointment_path %>
